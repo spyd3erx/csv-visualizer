@@ -1,0 +1,17 @@
+#operations {
+    margin-bottom: 20px;
+}
+
+.table-container {
+    width: 100%;
+    max-width: 90%;
+    margin: auto;
+}
+
+@media (max-width: 768px) {
+    #operations .btn {
+        width: 100%; 
+        margin-bottom: 10px;
+    }
+}
+

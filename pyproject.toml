@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "csv-visualizer"
+version = "0.1.0"
+description = ""
+authors = ["Juan Delgado <juanddelgadoguerra@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+flask = "^3.1.0"
+python-dotenv = "^1.0.1"
+pandas = "^2.2.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
