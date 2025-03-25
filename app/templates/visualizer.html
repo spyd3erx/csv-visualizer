@@ -24,9 +24,10 @@ customCSS %}
   type="text/javascript"
   src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"
 ></script>
-{% endblock %} {% block content %} {% if error %}
+{% endblock %} {% block content %} {% include "describe.html" %} {% include 'info.html' %} {% if error %}
+
 <p style="color: red">{{ error }}</p>
-{% else %}
+{% else %} {% endif %}
 <h1 class="text-center">CSV Visualizer</h1>
 
 <div id="operations" class="container my-3">
@@ -37,14 +38,25 @@ customCSS %}
       </a>
     </div>
     <div class="col-auto">
-      <a href="#" class="btn btn-secondary mx-2">
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#infoModal"
+      >
         <i class="fas fa-info-circle"></i> Info
-      </a>
+      </button>
     </div>
     <div class="col-auto">
-      <a href="#" class="btn btn-success mx-2">
+      <button
+        id="describeButton"
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#describeModal"
+      >
         <i class="fas fa-chart-bar"></i> Describe
-      </a>
+      </button>
     </div>
     <div class="col-auto">
       <a href="#" class="btn btn-warning mx-2">
@@ -52,7 +64,7 @@ customCSS %}
       </a>
     </div>
     <div class="col-auto">
-      <a href="{{url_for('upload')}}" class="btn btn-danger mx-2">
+      <a href="{{url_for('index')}}" class="btn btn-danger mx-2">
         <i class="fas fa-times"></i> Close
       </a>
     </div>
@@ -76,4 +88,5 @@ customCSS %}
       licenseKey: 'non-commercial-and-evaluation'
   });
 </script>
-{% endif %} {% endblock %}
+<script src="{{url_for('static', filename='js/ajax.js')}}"></script>
+{% endblock %}

@@ -1,5 +1,5 @@
 from werkzeug.utils import secure_filename
-from flask import request, render_template, redirect, url_for, session, Request
+from flask import request, render_template, redirect, url_for, session, request
 import csv
 import glob
 import os
@@ -11,7 +11,7 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in Config.ALLOWED_EXTENSIONS
 
-def upload():
+def index():
     """
     Carga un archivo CSV y lo almacena en la sesión.
     """
@@ -43,7 +43,7 @@ def visualizer():
     Visualiza el contenido del archivo CSV cargado.
     """
     if 'uploaded_file' not in session:
-        return redirect(url_for('upload'))
+        return redirect(url_for('index'))
 
     filepath = session['uploaded_file']
     if not os.path.exists(filepath):
@@ -59,6 +59,8 @@ def visualizer():
 def info():
     return render_template('info.html', info="This is a simple CSV visualizer. Upload a CSV file to visualize its contents.")
 
+def describe():
+    return render_template('describe.html')
 
 def remove():
     if 'uploaded_file' in session:

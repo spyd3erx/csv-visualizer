@@ -8,6 +8,8 @@ class Config:
     UPLOAD_FOLDER = 'uploads'
     ALLOWED_EXTENSIONS = {'csv'}
     os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+    MAX_CONTENT_LENGTH = 5 * 1024 * 1024
+
 
 class Development(Config):
     DEBUG = True
