@@ -15,3 +15,7 @@
     }
 }
 
+#table-describe {
+    overflow-x: auto;
+    white-space: nowrap;
+  }

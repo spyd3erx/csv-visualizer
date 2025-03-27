@@ -7,10 +7,11 @@ def  create_app():
     app.config.from_object(Development)
 
     #registering the routes
-    from .views import index, visualizer
+    from .views import index, visualizer, describe
 
     app.add_url_rule('/', 'index', index, methods=['GET', 'POST'])
     app.add_url_rule('/visualizer', 'visualizer', visualizer)
+    app.add_url_rule('/describe', 'describe', describe)
 
     @app.errorhandler(RequestEntityTooLarge)
     def handle_file_too_large(e):
