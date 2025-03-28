@@ -1,10 +1,10 @@
 from flask import Flask, render_template
 from werkzeug.exceptions import RequestEntityTooLarge
-from .config import Development
+from .config import Config
 
 def  create_app():
     app = Flask(__name__)
-    app.config.from_object(Development)
+    app.config.from_object(Config)
 
     #registering the routes
     from .views import index, visualizer, describe
@@ -15,7 +15,7 @@ def  create_app():
 
     @app.errorhandler(RequestEntityTooLarge)
     def handle_file_too_large(e):
-        return render_template('upload.html', error="File is too large. Maximum size allowed is 5 MB."), 413
+        return render_template('upload.html', error=f"File is too large. Maximum size allowed is {Config.MAX_CONTENT_LENGTH / 1024 / 1024} MB."), 413
 
 
     return app

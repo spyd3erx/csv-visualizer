@@ -54,7 +54,7 @@ def visualizer():
         reader = csv.reader(csvfile)
         data = [row for row in reader]
 
-    return render_template('visualizer.html', data=data, filename=filepath)
+    return render_template('visualizer.html', data=data)
 
 def info():
     return render_template('info.html', info="This is a simple CSV visualizer. Upload a CSV file to visualize its contents.")
